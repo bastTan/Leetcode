@@ -1,5 +1,3 @@
-package com.company;
-
 import binary_search.LC33_search_rotated_sorted_array;
 import binary_search.LC35_search_insert_position;
 
