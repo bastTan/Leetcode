@@ -2,20 +2,27 @@ package binary_search;
 
 import org.junit.Test;
 
-/* sorted, distinct integers, logn */
+// nums = [1, 3, 4, 6], target = 5
+// insertion position will be the smallest number that is greater than 5.
+// use s3, left+1 < right, 找分界线。
+// target_____target_____target
 public class LC35_search_insert_position {
-    public int find_first_insertion(int[] nums, int target) {
+    public int searchInsert(int[] nums, int target) {
         if (nums == null || nums.length == 0) return 0;
 
         int mid = 0;
         int left = 0, right = nums.length - 1;
-        while (left <= right) {
-            // [right, left] when finished
+        while (left + 1 < right) {
             mid = left + (right - left) / 2;
-            if (nums[mid] == target || nums[mid] > target) return mid;
+            if (nums[mid] == target) return mid;
+            else if (nums[mid] < target) left = mid;
+            else                         right = mid;
         }
-        // no number is >= target
-        return nums.length;
+
+        // target_____target_____target
+        if (target <= nums[left]) return left;
+        else if (target <= nums[right]) return right;
+        return right + 1;
     }
 
     @Test

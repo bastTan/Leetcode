@@ -4,6 +4,8 @@ package binary_search;
  * rotated binary search, no repeat
  * input: nums = [4, 5, 6, 7, 0, 1, 2], target = 0
  * output: 4 (nums[4] is 0)
+ * 需要找出单调区间 （LEFT < MID),
+ * 如果target 在单调区间内，移动boundary，否则去另一边
  */
 public class LC33_search_rotated_sorted_array {
     public int search(int[] nums, int target) {
