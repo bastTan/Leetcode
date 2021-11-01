@@ -19,7 +19,6 @@ public class LC25_reverse_by_k {
             // less than k node, return
             if (curr == null) return head;
         }
-
         ListNode nextHead = reverseKGroup(curr.next, k);
         curr.next = null;
         ListNode newHead = reverse(head);

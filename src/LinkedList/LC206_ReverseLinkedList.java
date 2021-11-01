@@ -7,21 +7,14 @@ import org.junit.Test;
 // S2: iterative
 // S3: recursion, reverse curr, curr.next, new head = reverse(head.next); head KEEP THE SAME
 public class LC206_ReverseLinkedList {
-    private class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            this.val = x;
-        }
-    }
 
-    public ListNode reverse(ListNode head) {
+    public LinkedList.ListNode reverse(LinkedList.ListNode head) {
         if (head == null) return head;
 
         ListNode dummy = new ListNode(-1);
-        ListNode curr = head;
+        LinkedList.ListNode curr = head;
         while (curr != null) {
-            ListNode next = curr.next;
+            LinkedList.ListNode next = curr.next;
             curr.next = dummy.next;
             dummy.next = curr;
 
@@ -55,13 +48,13 @@ public class LC206_ReverseLinkedList {
     }
 
     // S2
-    public ListNode reverseListIter(ListNode head) {
+    public LinkedList.ListNode reverseListIter(LinkedList.ListNode head) {
         if (head == null || head.next == null) return head;
         // 1 - 2 - 3 - 4 - 5
-        ListNode prev = null;
-        ListNode curr = head;
+        LinkedList.ListNode prev = null;
+        LinkedList.ListNode curr = head;
         while (curr != null) {
-            ListNode next = curr.next;
+            LinkedList.ListNode next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
@@ -70,11 +63,11 @@ public class LC206_ReverseLinkedList {
     }
 
     // S3 recursion, new head = recursion(head.next), reverse curr.
-    public ListNode reverseListRec(ListNode head) {
+    public LinkedList.ListNode reverseListRec(LinkedList.ListNode head) {
         // 0 or one node
         if (head == null || head.next == null) return head;
 
-        ListNode newHead = reverseListRec(head.next);
+        LinkedList.ListNode newHead = reverseListRec(head.next);
         head.next.next = head;
         head.next = null;
         return newHead;
@@ -83,7 +76,7 @@ public class LC206_ReverseLinkedList {
     @Test
     public void testReverse() {
         int[] array = {1, 2, 3, 4, 5, 6};
-        ListNode head = genList(array);
+        LinkedList.ListNode head = genList(array);
         print(head);
         head = reverse(head);
         print(head);
